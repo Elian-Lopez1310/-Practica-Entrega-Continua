@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
-
-// Puerto FIJO para Docker y Render
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.get('/', (req, res) => {
   res.send(`<!DOCTYPE html>
@@ -154,7 +152,9 @@ app.get('/', (req, res) => {
       DEVOPS PRACTICE • DOCKER • NODE
     </div>
     <div class="rocket">🚀</div>
-    <h1>Hola Mundo desde <span class="highlight">DevOps</span></h1>
+
+    <h1>Hola Mundo desde <span class="highlight">Render</span></h1>
+
     <p class="subtitle">
       App web lista para empaquetar en <span class="highlight">Docker</span> y subir a <span class="highlight">Docker Hub</span>.
     </p>
@@ -177,7 +177,6 @@ app.get('/', (req, res) => {
 </html>`);
 });
 
-
-app.listen(port, '0.0.0.0', () => {
-  console.log("🔥 Servidor corriendo en puerto " + port);
+app.listen(port, () => {
+  console.log("🔥 Servidor corriendo en puerto: " + port);
 });
